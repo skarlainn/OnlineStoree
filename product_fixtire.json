@@ -1,0 +1,28 @@
+[
+{
+    "model": "catalog.product",
+    "pk": 18,
+    "fields": {
+        "name": "Яблоки",
+        "description": "Красные",
+        "image": "",
+        "category": 10,
+        "price": 90.0,
+        "created_at": "2026-04-29",
+        "updated_at": "2026-04-29"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 20,
+    "fields": {
+        "name": "Огурцы",
+        "description": "Зеленые",
+        "image": "",
+        "category": 9,
+        "price": 150.0,
+        "created_at": "2026-04-29",
+        "updated_at": "2026-04-29"
+    }
+}
+]
