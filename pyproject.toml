@@ -1,30 +1,21 @@
 [tool.poetry]
-<<<<<<< HEAD
 name = "onlinestoree"
-=======
 name = "pyproject-toml"
->>>>>>> 13f530bebb75fa9b6b6a3f778aa47d0c7a4c9cc9
 version = "0.1.0"
 description = ""
 authors = ["none"]
 readme = "README.md"
-<<<<<<< HEAD
-=======
 packages = [{include = "pyproject"}]
->>>>>>> 13f530bebb75fa9b6b6a3f778aa47d0c7a4c9cc9
+
 
 [tool.poetry.dependencies]
 python = "^3.12"
 
-
-<<<<<<< HEAD
-=======
 [tool.poetry.group.lint.dependencies]
 flake8 = "^7.3.0"
 black = "^26.3.1"
 isort = "^8.0.1"
 
->>>>>>> 13f530bebb75fa9b6b6a3f778aa47d0c7a4c9cc9
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
