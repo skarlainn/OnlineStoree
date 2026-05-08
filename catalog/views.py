@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
 from .models import Product
 from django.views.generic import DetailView, ListView, TemplateView
+
 
 class HomeTemplateView(TemplateView):
     template_name = 'catalog/home.html'
@@ -21,6 +21,10 @@ def contacts(request):
 
 class ProductListView(ListView):
     model = Product
+    template_name = 'catalog/product_list.html'
+    context_object_name = 'products'
 
-class ProductDetailView(DetailView):
+class ProductDetailsView(DetailView):
     model = Product
+    template_name = 'catalog/product_details.html'
+    context_object_name = 'product'
