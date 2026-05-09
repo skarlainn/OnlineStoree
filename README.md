@@ -34,7 +34,6 @@
 3. blog_form.html
 4. blog_confirm_delete.html
 
-
 Запуск программы осуществляется через модуль manage.py
 
 
