@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Product
 from django.views.generic import DetailView, ListView, TemplateView
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
+from django.urls import reverse, reverse_lazy
 
 
 class HomeTemplateView(TemplateView):
