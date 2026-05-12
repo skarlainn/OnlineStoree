@@ -10,6 +10,11 @@ packages = [{include = "pyproject"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
+django = "^6.0.4"
+ipython = "^9.13.0
+pillow = "^12.2.0"
+python-dotenv = "^1.2.2"
+
 
 [tool.poetry.group.lint.dependencies]
 flake8 = "^7.3.0"
