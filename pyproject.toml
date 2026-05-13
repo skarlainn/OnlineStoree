@@ -1,29 +1,22 @@
 [tool.poetry]
 name = "onlinestoree"
-name = "pyproject-toml"
 version = "0.1.0"
 description = ""
-authors = ["none"]
+authors = ["Your Name <your.email@example.com>"]
 readme = "README.md"
-packages = [{include = "pyproject"}]
-
 
 [tool.poetry.dependencies]
 python = "^3.12"
-
-
-[tool.poetry.group.lint.dependencies]
+django = "^6.0.5"
+pillow = "^12.2.0"
+psycopg2-binary = "^2.9.12"
+python-dotenv = "^1.2.2"
 flake8 = "^7.3.0"
 black = "^26.3.1"
-isort = "^8.0.1"
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^9.13.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.isort]
-line_length = 119
-
-
-[tool.black]
-line-length = 119
