@@ -26,7 +26,7 @@ class Product(models.Model):
     )
     category = models.ForeignKey(
         "category",
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         verbose_name="Категория",
         help_text="Введите категорию",
         related_name="products",
