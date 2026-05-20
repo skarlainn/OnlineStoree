@@ -34,6 +34,7 @@ class Product(models.Model):
         blank=True,
     )
     price = models.FloatField(verbose_name="Цена товара", help_text="Введите цену товара")
+    is_published = models.BooleanField(default=False)
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
@@ -44,3 +45,6 @@ class Product(models.Model):
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
         ordering = ["name"]
+        permissions = [
+            ("can_unpublish_product", "Can unpublish product"),
+        ]
