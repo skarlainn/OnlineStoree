@@ -8,6 +8,8 @@ from .models import Product
 from django.views.generic import DetailView, ListView, TemplateView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse, reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 
 
 class HomeTemplateView(TemplateView):
@@ -30,6 +32,8 @@ class ProductListView(ListView):
     template_name = 'catalog/product_list.html'
     context_object_name = 'products'
 
+
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class ProductDetailsView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = 'catalog/product_details.html'
