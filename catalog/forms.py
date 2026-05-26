@@ -2,11 +2,19 @@ from django import forms
 from .models import Product
 from django.core.exceptions import ValidationError
 
+class StyleFormMixin:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            if isinstance(field, forms.BooleanField):
+                field.widget.attrs.update({"class": "form-check-input"})
+            else:
+                field.widget.attrs.update({"class": "form-control"})
 
-class ProductForm(forms.ModelForm):
+class ProductForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Product
-        exclude = ('created_at', 'updated_at')
+        exclude = ('created_at', 'updated_at', 'owner')
 
 
     def __init__(self, *args, **kwargs):
@@ -44,3 +52,8 @@ class ProductForm(forms.ModelForm):
             raise ValidationError('Цена не может быть отрицательной')
 
         return price
+
+class ProductModeratorForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ["is_published"]
