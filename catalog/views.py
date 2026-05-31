@@ -8,6 +8,11 @@ from .models import Product
 from django.views.generic import DetailView, ListView, TemplateView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse, reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+from .models import Category
+from .services import get_products_list_by_category
+from django.core.cache import cache
 
 
 class HomeTemplateView(TemplateView):
@@ -30,6 +35,16 @@ class ProductListView(ListView):
     template_name = 'catalog/product_list.html'
     context_object_name = 'products'
 
+    def get_queryset(self, *args, **kwargs):
+        queryset = cache.get('products_queryset')
+        if not queryset:
+            queryset = super().get_queryset()
+            cache.set('products_queryset', queryset, 60 * 15)
+        return queryset
+
+
+
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class ProductDetailsView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = 'catalog/product_details.html'
@@ -89,3 +104,13 @@ class UnpublishProductView(LoginRequiredMixin, View):
         product.is_published = False
         product.save()
         return redirect('catalog:product', pk=product.id)
+
+class ProductCategoryListView(ListView):
+    model = Category
+    template_name = 'catalog/products_list_by_category.html'
+    context_object_name = 'category'
+
+    def get_queryset(self, *args, **kwargs):
+        queryset = get_products_list_by_category(self.kwargs.get('pk'))
+
+        return queryset
